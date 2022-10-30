@@ -20,7 +20,11 @@ Kalibr: https://github.com/ethz-asl/kalibr
 
 ## 2) Setup of the Realsense D455
 
-To obtain data from the D455 and publish it on the ROS network, two libraries are needed. The library librealsense (https://github.com/IntelRealSense/librealsense) needs to be installed to retrieve the data from the 
+To obtain data from the D455 and publish it on the ROS network, two libraries are needed. The library librealsense (https://github.com/IntelRealSense/librealsense) needs to be installed to retrieve the data from the module and a realsense ROS package to transform data to ROS messages. 
+
+
+### D455 streaming parameters
+Due to problems with the intel modules and various systems it is sometimes hard to get the module working properly. At the time of writing the librealsense library is not fully supported for the new Jetpack 5 environment. One of the issues is that the depth stream 640 x 480 with 30 Fps causes failures. Also sometimes you first need to do a initial reset due to problems with the firmware on the modules itself. With the docker images we try to specify the correct environment to get OpenVINS working with the D455. 
 
 
 ### 2.1) Jetson Platform
