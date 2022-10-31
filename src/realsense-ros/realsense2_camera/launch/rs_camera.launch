@@ -37,8 +37,8 @@
   <arg name="pointcloud_texture_stream" default="RS2_STREAM_COLOR"/>
   <arg name="pointcloud_texture_index"  default="0"/>
 
-  <arg name="enable_emitter"        default="false"/>
-  <arg name="emitter_on_off"        default="false"/> <!--If emitter_on_off=true, depth_fps must equal to infra_fps, and the actual output frame rate will be halved.-->
+  <arg name="enable_emitter"        default="true"/>
+  <arg name="emitter_on_off"        default="true"/> <!--If emitter_on_off=true, depth_fps must equal to infra_fps, and the actual output frame rate will be halved.-->
   <arg name="enable_sync"           default="true"/>
   <arg name="align_depth"           default="true"/>
 
@@ -47,7 +47,7 @@
   <arg name="linear_accel_cov"      default="0.01"/>
   <arg name="initial_reset"         default="true"/> <!-- leave this to true else it will give warnings when changing enable_emitter and emitter_on_off -->
   <arg name="unite_imu_method"      default="copy"/>
-  <arg name="hold_back_imu_for_frames"      default="false"/>
+  <arg name="hold_back_imu_for_frames"      default="true"/>
   
   <group ns="$(arg camera)">
     <include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">

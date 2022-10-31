@@ -9,8 +9,8 @@
     <node name="run_subscribe_msckf" pkg="ov_msckf" type="run_subscribe_msckf" output="screen">
         <param name="verbosity"    type="string" value="$(arg verbosity)" />
         <param name="config_path"  type="string" value="$(arg config_path)" />
-        <param name="use_stereo"   type="bool"   value="false" />
-        <param name="max_cameras"  type="int"    value="1" />
+        <param name="use_stereo"   type="bool"   value="true" />
+        <param name="max_cameras"  type="int"    value="2" />
     </node>
 
 </launch>

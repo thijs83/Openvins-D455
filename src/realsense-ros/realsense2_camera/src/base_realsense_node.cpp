@@ -2474,7 +2474,7 @@ void BaseRealSenseNode::publishFrame(rs2::frame f, const ros::Time& t,
             img->header.seq = seq[stream];
 
             image_publisher.first.publish(img);
-        }
+        }*/
         image_publisher.second->update();
 
         /*  */
