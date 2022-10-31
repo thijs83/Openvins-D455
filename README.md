@@ -56,7 +56,7 @@ in script needs to be done by
 ```
 _sensors[DEPTH].set_option(RS2_OPTION_EMITTER_ON_OFF, 1)
 ```
-
+https://github.com/IntelRealSense/realsense-ros/blob/development/realsense2_camera/src/base_realsense_node.cpp#L610
 
 ### 2.1) Jetson Platform
 
