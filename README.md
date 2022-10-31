@@ -47,7 +47,15 @@ docker run -it --rm \
 By using the device group rules, permission is granted to use USB by the container. It also mounts the /dev directory of the host platform on the container to find the USB ports.
 
 
-## 3) Obtaining D455 calibration parameters
+## 3) other info
+Setting emitter on and off each frame using command
+```
+rosrun dynamic_reconfigure dynparam set /camera/stereo_module emitter_on_off 1
+```
+in script needs to be done by
+```
+_sensors[DEPTH].set_option(RS2_OPTION_EMITTER_ON_OFF, 1)
+```
 
 
 ### 2.1) Jetson Platform
