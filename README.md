@@ -2,6 +2,10 @@
 
 This repository explains how to get the Intel Realsense D455 working with the OpenVINS library to estimate .
 
+The official ROS realsense package is changed with the use of repository:
+https://github.com/ZJU-FAST-Lab/ego-planner
+
+This enables us to enable or disable the IR emitter. Disabling the emitter gives us IR images without speckles, and enabling the emitter gives us accurate depth readings. This can be a problem if you want both IR images without speckles and accurate depth streams. Therefore the option emitter_on_off can be set to true, this will give an alternating result between the two scenarios mentioned above. The FPS is split between half of the images published without speckles and the other half for the accurate depth stream.
 
 ## Contents:
 * [1. Intro](#1-Intro)
