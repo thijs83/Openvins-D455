@@ -20,7 +20,11 @@ Kalibr: https://github.com/ethz-asl/kalibr
 
 ## 2) Setup of the Realsense D455
 
-To obtain data from the D455 and publish it on the ROS network, two libraries are needed. The library librealsense (https://github.com/IntelRealSense/librealsense) needs to be installed to retrieve the data from the 
+To obtain data from the D455 and publish it on the ROS network, two libraries are needed. The library librealsense (https://github.com/IntelRealSense/librealsense) needs to be installed to retrieve the data from the module and a realsense ROS package to transform data to ROS messages. 
+
+
+### D455 streaming parameters
+Due to problems with the intel modules and various systems it is sometimes hard to get the module working properly. At the time of writing the librealsense library is not fully supported for the new Jetpack 5 environment. One of the issues is that the depth stream 640 x 480 with 30 Fps causes failures. Also sometimes you first need to do a initial reset due to problems with the firmware on the modules itself. With the docker images we try to specify the correct environment to get OpenVINS working with the D455. 
 
 
 ### 2.1) Jetson Platform
@@ -43,8 +47,16 @@ docker run -it --rm \
 By using the device group rules, permission is granted to use USB by the container. It also mounts the /dev directory of the host platform on the container to find the USB ports.
 
 
-## 3) Obtaining D455 calibration parameters
-
+## 3) other info
+Setting emitter on and off each frame using command
+```
+rosrun dynamic_reconfigure dynparam set /camera/stereo_module emitter_on_off 1
+```
+in script needs to be done by
+```
+_sensors[DEPTH].set_option(RS2_OPTION_EMITTER_ON_OFF, 1)
+```
+https://github.com/IntelRealSense/realsense-ros/blob/development/realsense2_camera/src/base_realsense_node.cpp#L610
 
 ### 2.1) Jetson Platform
 
