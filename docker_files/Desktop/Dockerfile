@@ -1,7 +1,16 @@
-FROM ros:noetic as build_env
+#FROM ros:noetic as build_env
+FROM osrf/ros:noetic-desktop-full as build_env
 
 ENV ROS_DISTRO noetic
  
+
+
+# nvidia-container-runtime
+ENV NVIDIA_VISIBLE_DEVICES \
+    ${NVIDIA_VISIBLE_DEVICES:-all}
+ENV NVIDIA_DRIVER_CAPABILITIES \
+    ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics
+
 
 # Builder dependencies installation 
 # make sure the -qq -y --no-install-recommends to always start automatically install
@@ -94,26 +103,14 @@ RUN mkdir -p ${WORKSPACE}/src && \
 
 
 
+#RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+# Create bash script that sources environments
+RUN echo 'source /opt/ros/${ROS_DISTRO}/setup.bash && \
+          source /catkin_ws/devel/setup.bash && \
+          exec "$@"' \
+        > /root/ros_entrypoint.sh
 
 
-
-
-
-
-
-
-
-
-
-# source ROS
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-
-RUN source /opt/ros/${ROS_DISTRO}/setup.bash
-RUN source ${WORKSPACE}/devel/setup.bash
-
-
-
-
-
-# End with a terminal in the container
-CMD ["bash"]
+# End with a terminal in the container and running the script to source environments
+ENTRYPOINT ["bash", "/root/ros_entrypoint.sh"]
