@@ -37,8 +37,8 @@
   <arg name="pointcloud_texture_stream" default="RS2_STREAM_COLOR"/>
   <arg name="pointcloud_texture_index"  default="0"/>
 
-  <arg name="enable_emitter"        default="true"/>
-  <arg name="emitter_on_off"        default="true"/> <!--If emitter_on_off=true, depth_fps must equal to infra_fps, and the actual output frame rate will be halved.-->
+  <arg name="enable_emitter"        default="false"/> <!--If enable_emitter=off, then emitter_on_off should also be off -->
+  <arg name="emitter_on_off"        default="false"/> <!--If emitter_on_off=true, depth_fps must equal to infra_fps, and the actual output frame rate will be halved.-->
   <arg name="enable_sync"           default="true"/>
   <arg name="align_depth"           default="true"/>
 
